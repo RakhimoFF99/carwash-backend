@@ -4,6 +4,8 @@ const router = Router()
 
 router.post('/login',auth)
 
+
 router.post('/register',register)
+
 
 module.exports = router

@@ -1,4 +1,4 @@
-const {Schema}  = require('mongoose')
+const {Schema,model}  = require('mongoose')
 
 const schema = new Schema({
     phone:{
@@ -17,4 +17,6 @@ const schema = new Schema({
         trim:true
     }
 
-})
+},{timestamps:true})
+
+module.exports = model("UserModel",schema)
