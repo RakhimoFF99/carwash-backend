@@ -4,7 +4,8 @@ const schema = new Schema({
     phone:{
         type:Number,
         required:true,
-        trim:true
+        trim:true,
+        unique:true,
     },
     name:{
         type:String,
