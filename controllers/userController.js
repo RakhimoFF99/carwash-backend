@@ -1,12 +1,21 @@
+const userModel = require('../models/userModel')
 
+exports.addUser =  async function (req,res) {
+    const user = await new userModel({
+        phone:req.body.phone,
+        name:req.body.name,
+        password:req.body.password,
 
-exports.addUser = function (req,res) {
-  
-    res.send('addWash')
+    })
+  const res =  await user.save()
+  res.send(res)
+
 }
-exports.getAllUser = function (req,res) {
-    res.send('getAllUser')
+exports.getAllUser = async function (req,res) {
+    const user = await userModel.find({})
+    res.send(user)
 }
-exports.getUserById = function(req,res) {
-    res.send('getUserById')
+exports.getUserById =  async function(req,res) {
+const user = await userModel.find({_id:req.params.id})
+res.send(user)
 }

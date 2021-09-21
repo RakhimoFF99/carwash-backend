@@ -4,9 +4,9 @@ exports.addOrder = function (req,res) {
   
     res.send('addOrder')
 }
-exports.getAllUser = function (req,res) {
+exports.getAllOrder = function (req,res) {
     res.send('getAllOrder')
 }
-exports.getUserById = function(req,res) {
+exports.getOrderById = function(req,res) {
     res.send('getOrderById')
 }
