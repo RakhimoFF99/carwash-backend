@@ -39,3 +39,7 @@ exports.deleteUserById = async function (req,res) {
   const response  = await userModel.deleteOne({_id: req.params.id})
   res.send(response)
 }
+
+exports.updateUserById = async (req,res) => {
+    const user = await userModel.findByIdAndUpdate(req.params.id)
+} 
