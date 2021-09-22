@@ -6,6 +6,7 @@ const app = express()
 app.use(bodyParser())
 app.use('/api',require('./routes/userRoute'))
 app.use('/api',require('./routes/authUser'))
+app.use('/api',require('./routes/washRoute'))
 app.get('/',(req,res) => {
     res.send("<h1 style='margin:0 200px;'>Working</h1>")
 })
