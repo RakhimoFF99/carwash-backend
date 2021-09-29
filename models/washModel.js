@@ -7,11 +7,22 @@ const washSchema = mongoose.Schema({
         trim:true,
         unique:true
     },
+    isActive:{
+        type:Boolean,
+        default:false
+    },
     phone:{
         type:String,
         required:true,
         trim:true,
         unique:true
+    },
+    logo:{
+        type:String,
+    
+    },
+    photos:{
+        type:Array,
     },
     address:{
         type:String,
@@ -24,7 +35,22 @@ const washSchema = mongoose.Schema({
     lang:{
         type:Number
     },
-    serviceType:[],
+    serviceType:{
+        type:Array,
+    },
+    like:{
+        type:Number
+    },
+    dislike:{
+        type:Number
+    },
+    workFrom:{
+        type:String,
+
+    },
+    workTo : {
+        type:String
+    },
     districtId:{
       type:mongoose.Schema.Types.ObjectId,
       required:true,
