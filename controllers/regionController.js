@@ -4,7 +4,7 @@ exports.addRegion = async (req,res) => {
     try {
         const region  = await regionModel({
             name:req.body.name,
-            regionId = req.body.regionId
+         
         })
         const response = await region.save()
         if(response) {
@@ -32,7 +32,7 @@ exports.addRegion = async (req,res) => {
 }   
 exports.getAllRegion = async (req,res) => {
     try {
-        const districts = await districtModel.find({})
+        const districts = await regionModel.find({})
         if(districts) {
             res.status(200).json({
                 success:true,
@@ -91,5 +91,24 @@ exports.deleteRegionById = async (req,res) => {
 }
 
 exports.updateRegionById  = async (req,res) => {
-    const region = await regionModel.findByIdAndUpdate(req.params.id)
+    try {
+        const region = await regionModel.findByIdAndUpdate(req.params.id,{$set:req.body})
+        if(region) {
+            res.status(200).json({
+                success:true,
+                data:region
+            })
+        }
+        else {
+            res.status(400).json({
+                success:false,
+
+            })
+        }
+    
+    }
+    catch(e) {
+        console.log(e)
+    }
+    
 }

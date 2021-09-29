@@ -5,7 +5,7 @@ const districtSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    regionId : {
+    region : {
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:"Region"

@@ -3,10 +3,16 @@ const db = require('./db/db')
 const bodyParser = require('body-parser')
 const app = express()
 
-app.use(bodyParser())
+app.use(express.json())
 app.use('/api',require('./routes/userRoute'))
 app.use('/api',require('./routes/authUser'))
 app.use('/api',require('./routes/washRoute'))
+app.use('/api',require('./routes/regionRoute'))
+app.use('/api',require('./routes/districtRoute'))
+app.use('api/',require('./routes/orderRoute'))
+
+
+
 app.get('/',(req,res) => {
     res.send("<h1 style='margin:0 200px;'>Working</h1>")
 })

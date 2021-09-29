@@ -13,6 +13,7 @@ exports.auth = async function (req, res) {
                 })
             }
             if(user.password == req.body.password) {
+    
                 res.status(200).json({
                     success:true,
                     data:user

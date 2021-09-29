@@ -24,7 +24,7 @@ const washSchema = mongoose.Schema({
     lang:{
         type:Number
     },
-    services:[],
+    serviceType:[],
     districtId:{
       type:mongoose.Schema.Types.ObjectId,
       required:true,
