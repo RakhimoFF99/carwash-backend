@@ -10,6 +10,7 @@ app.use('/api',require('./routes/washRoute'))
 app.use('/api',require('./routes/regionRoute'))
 app.use('/api',require('./routes/districtRoute'))
 app.use('/api',require('./routes/orderRoute'))
+app.use('/api',require('./routes/commentRoute'))
 
 
 

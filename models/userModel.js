@@ -20,6 +20,7 @@ const schema = new Schema({
     role:{
         type:String,
         required:true,
+        default:"user",
         enum:["admin","supervisor","user"]
     }
 
