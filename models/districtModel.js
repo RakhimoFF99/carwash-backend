@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const districtSchema = mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     region : {
         type:mongoose.Schema.Types.ObjectId,

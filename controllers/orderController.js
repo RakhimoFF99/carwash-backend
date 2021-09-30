@@ -1,7 +1,20 @@
 
 const orderModel = require('../models/orderModel')
-exports.addOrder = function (req,res) {
-   
+exports.addOrder = async  function (req,res) {
+    try {
+        const order = await new orderModel(req.body)
+        const result = await order.save()
+        res.status(201).json({
+            success:true,
+            message:"Buyurtma mufaqqiyatli qo'shildi",
+            data:result
+        })
+
+    }
+    catch(e) {
+        res.status(400).send(e)
+    }
+
 }
 exports.getAllOrder = async function (req,res) {
     try {

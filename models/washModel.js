@@ -44,6 +44,10 @@ const washSchema = mongoose.Schema({
     dislike:{
         type:Number
     },
+    comments:{
+        type:Array,
+
+    },
     workFrom:{
         type:String,
 

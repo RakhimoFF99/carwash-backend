@@ -21,6 +21,14 @@ const  orderSchema = mongoose.Schema({
         type:Boolean,
         default:false
     },
+    service:{
+        type:String,
+        required:true
+    },
+    carModel:{
+        type:String,
+        required:true
+    },
     washId :{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Wash",
