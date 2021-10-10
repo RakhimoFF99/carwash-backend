@@ -1,11 +1,10 @@
 const UserModel = require('../models/userModel')
+const config = require('config')
 const jwt = require('jsonwebtoken')
 
 exports.auth = async function (req, res) {
     try {
-        const user = await UserModel.findOne({phone:req.body.phone},(err,user) => {
-            console.log(err)
-            if(err) return res.send(err)
+        const user = await UserModel.findOne({phone:req.body.phone}) 
             if(!user) {
                 return res.status(400).json({
                     success:true,
@@ -13,11 +12,9 @@ exports.auth = async function (req, res) {
                 })
             }
             if(user.password == req.body.password) {
-    
-                res.status(200).json({
-                    success:true,
-                    data:user
-                })
+             const token = await jwt.sign({id:user._id,role:user.role}, "2252534elyor")
+            res.header('authorization',token).send(token)
+               
             }
             else {
                 res.status(400).json(
@@ -28,11 +25,19 @@ exports.auth = async function (req, res) {
                 )
             }
         
-        })
+        
     }
+
     catch(e) {
          console.log(e)
     }
+}
+exports.getUserData = async (req,res) => {
+   const user = await UserModel.findById(req.user.id)
+   res.status(200).json({
+       success:true,
+       data:user
+   })
 }
 
 
@@ -54,10 +59,16 @@ exports.register = async function (req, res) {
 
         const user = await new UserModel(req.body)
         const data = await user.save()
-        res.send(data)
+        res.status(201).json({
+            success:true,
+            data:data
+        })
     }
     catch (e) {
-        console.log(e)
+        res.status(400).json({
+            success:false,
+            message:e
+        })
     }
 
 }

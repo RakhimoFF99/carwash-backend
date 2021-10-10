@@ -46,7 +46,6 @@ const washSchema = mongoose.Schema({
     },
     comments:{
         type:Array,
-
     },
     workFrom:{
         type:String,

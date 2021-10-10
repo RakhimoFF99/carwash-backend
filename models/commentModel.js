@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const commentSchema = mongoose.Schema({
     comment:{
         type:String,
+        required:true,
     },
     washId :{
         type:mongoose.Schema.Types.ObjectId,

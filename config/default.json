@@ -1,4 +1,4 @@
 {
-    "mongoUri" :"mongodb+srv://elyor123:2252534elyor@cluster0.gwnxo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
+    "mongoUri" :"mongodb+srv://elyor123:2252534elyor@cluster0.gwnxo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "secret_key":"7VLnVK7cSQ0KIyJWZd4DK19WKq53D2uODISoxJExp0BSp0pYbhee9pqYwDa8DHo"
 }
