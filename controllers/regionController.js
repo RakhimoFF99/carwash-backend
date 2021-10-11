@@ -30,6 +30,7 @@ exports.addRegion = async (req,res) => {
  
     
 }   
+
 exports.getAllRegion = async (req,res) => {
     try {
         const districts = await regionModel.find({})
@@ -70,6 +71,7 @@ exports.getRegionById = async (req,res) => {
 
 }
 
+
 exports.deleteRegionById = async (req,res) => {
     try {
         const region  = await regionModel.deleteOne({
@@ -92,7 +94,7 @@ exports.deleteRegionById = async (req,res) => {
 
 exports.updateRegionById  = async (req,res) => {
     try {
-        const region = await regionModel.findByIdAndUpdate(req.params.id,{$set:req.body})
+        const region = await regionModel.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
         if(region) {
             res.status(200).json({
                 success:true,

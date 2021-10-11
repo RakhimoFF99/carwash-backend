@@ -24,6 +24,7 @@ exports.addUser =  async function (req,res) {
     }
    
 }
+
 exports.getAllUser = async function (req,res) {
     const user = await userModel.find({})
     res.send(user)
@@ -34,6 +35,7 @@ exports.getUserById =  async function(req,res) {
 const user = await userModel.find({_id:req.params.id})
 res.send(user)
 }
+
 
 exports.deleteUserById = async function (req,res) {
   const response  = await userModel.deleteOne({_id: req.params.id})

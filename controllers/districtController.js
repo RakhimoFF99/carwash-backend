@@ -118,7 +118,7 @@ exports.updateDistrictById = async (req,res) => {
     try {
         const district = await districtModel.findByIdAndUpdate(req.params.id,{
             $set:req.body
-        })
+        },{new:true})
         if(district) {
             res.status(200).json({
                 success:true,

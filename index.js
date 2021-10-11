@@ -3,7 +3,7 @@ const db = require('./db/db')
 const bodyParser = require('body-parser')
 const app = express()
 
-app.use(express.json())
+app.use(bodyParser())
 app.use('/api',require('./routes/userRoute'))
 app.use('/api',require('./routes/authUser'))
 app.use('/api',require('./routes/washRoute'))
@@ -11,6 +11,8 @@ app.use('/api',require('./routes/regionRoute'))
 app.use('/api',require('./routes/districtRoute'))
 app.use('/api',require('./routes/orderRoute'))
 app.use('/api',require('./routes/commentRoute'))
+app.use('/api',require('./routes/fileUpload'))
+app.use(require('./routes/sendFile.js'))
 
 
 

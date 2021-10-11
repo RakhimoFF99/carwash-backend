@@ -13,6 +13,8 @@ catch(e) {
 }
 
 }
+
+
 exports.getAllWash =  async function (req,res) {
     const wash  = await washModel.find({}).populate('districtId','region')
     res.send(wash)
@@ -21,27 +23,27 @@ exports.getWashById = async  function(req,res) {
  const wash = await washModel.find({
      _id:req.params.id
  }).populate('districtId','name').populate('ownerId',"name")
-
  res.send(wash)
 }
+
 
 exports.deleteWash = async function () {
     const wash = await washModel.deleteOne({
         _id:req.params.id
     })
+
     res.send(wash)
+
 }
 
 exports.updateWashById = async (req,res) => {
     try {
-        const wash = washModel.findByIdAndUpdate(req.params.id,{$set:req.body})
+        const wash = washModel.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
     }
     catch(e) {
         res.status(400).json({
             success:false,
             message:e
         })
-    }
-
-    
+    }  
 }

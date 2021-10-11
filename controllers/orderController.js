@@ -1,5 +1,6 @@
 
 const orderModel = require('../models/orderModel')
+
 exports.addOrder = async  function (req,res) {
     try {
         const order = await new orderModel(req.body)
@@ -16,6 +17,7 @@ exports.addOrder = async  function (req,res) {
     }
 
 }
+
 exports.getAllOrder = async function (req,res) {
     try {
         const order = await orderModel.find({})
@@ -34,6 +36,7 @@ exports.getAllOrder = async function (req,res) {
     }
         
 }
+
 exports.getOrderById = async function(req,res) {
    try {
        const order = await orderModel.findById(req.params.id)
@@ -51,6 +54,7 @@ exports.getOrderById = async function(req,res) {
        })
    }
 }
+
 exports.deleteOrderById = async (req,res) => {
     try {
         const order = await orderModel.findByIdAndRemove(req.params.id)
@@ -72,7 +76,7 @@ exports.deleteOrderById = async (req,res) => {
 
 exports.updateOrderById  = async (req,res) => {
     try {
-        const order = await orderModel.findByIdAndUpdate(req.params.id,{$set:req.body})
+        const order = await orderModel.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
         if(order) {
             res.status(200).json({
                 success:true,

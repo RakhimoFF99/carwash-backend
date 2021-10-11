@@ -2,7 +2,6 @@ const commentModel = require('../models/commentModel')
 
 
 exports.getAllComment = async (req,res) => {
-    console.log('allComment')
     try {
         const comment = await commentModel.find({})
         if(comment) {

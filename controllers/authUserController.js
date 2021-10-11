@@ -3,17 +3,18 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 
 exports.auth = async function (req, res) {
+    console.log(req.body)
     try {
         const user = await UserModel.findOne({phone:req.body.phone}) 
             if(!user) {
                 return res.status(400).json({
-                    success:true,
+                    success:false,
                     message:"Login yoki parol  notogri"
                 })
             }
             if(user.password == req.body.password) {
              const token = await jwt.sign({id:user._id,role:user.role}, "2252534elyor")
-            res.header('authorization',token).send(token)
+            res.header('authorization',token).json({success:true,token})
                
             }
             else {
