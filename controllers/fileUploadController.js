@@ -6,7 +6,6 @@ exports.uploadFile = async (req,res) => {
         image:{
             filename:req.file.filename,
             path:`images/${req.file.filename}`
-            
         }
     })
 }

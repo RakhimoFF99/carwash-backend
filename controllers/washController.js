@@ -3,6 +3,15 @@ const washModel = require('../models/washModel')
 
 
 exports.addWash = async function (req,res) {
+    const washSearch = await washModel.findOne({
+        phone:req.body.phone
+    })
+    if(washSearch) {
+        return res.status(400).json({
+            success:false,
+            message:"Avto yuvish shahobchasi allaqachon ro'yhatdan o'tgan"
+        })
+    }
   try {
     const wash  = await new washModel (req.body)
     const response = await wash.save()
@@ -13,8 +22,6 @@ catch(e) {
 }
 
 }
-
-
 exports.getAllWash =  async function (req,res) {
     const wash  = await washModel.find({}).populate('districtId','region')
     res.send(wash)
