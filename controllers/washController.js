@@ -54,3 +54,19 @@ exports.updateWashById = async (req,res) => {
         })
     }  
 }
+exports.findWashByLetter = async (req,res) => {
+    try {
+        const wash =  await washModel.find({"name": {$regex: '^' + req.params.letter, $options: 'i'}})
+        if(wash) {
+            res.status(200).send(wash)
+    }
+}
+    catch(e) {
+        res.status(400).json({
+            success:false,
+            message:e
+        })
+    }
+
+    
+}

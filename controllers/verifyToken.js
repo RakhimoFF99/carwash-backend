@@ -9,12 +9,6 @@ module.exports =  async function (req,res,next) {
     }
  try {
     const user = await jwt.verify(token,'2252534elyor')
-    if(user.role !== 'admin') {
-        return res.status(400).json({
-            success:false,
-            message:"No access"
-        })
-    }
      req.user = user
     next()
  }

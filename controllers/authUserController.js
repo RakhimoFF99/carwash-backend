@@ -3,7 +3,12 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 
 exports.auth = async function (req, res) {
-    console.log(req.body)
+    if(!req.body.phone && !req.body.password) {
+    return res.status(400).json({
+        success:false,
+        message:"Malumotlarni to'liq kiriting"
+    })
+    }
     try {
         const user = await UserModel.findOne({phone:req.body.phone}) 
             if(!user) {
@@ -12,6 +17,7 @@ exports.auth = async function (req, res) {
                     message:"Login yoki parol  notogri"
                 })
             }
+
             if(user.password == req.body.password) {
              const token = await jwt.sign({id:user._id,role:user.role}, "2252534elyor")
             res.header('authorization',token).json({success:true,token})
@@ -30,7 +36,10 @@ exports.auth = async function (req, res) {
     }
 
     catch(e) {
-         console.log(e)
+         res.status(400).json({
+             success:false,
+             message:e
+         })
     }
 }
 exports.getUserData = async (req,res) => {
@@ -44,7 +53,12 @@ exports.getUserData = async (req,res) => {
 
 
 exports.register = async function (req, res) {
-
+        if(!req.body.phone && !req.body.password && !req.body.name) {
+            return res.status(400).json({
+                success:false,
+                message:"Malumotlarni to'liq kiriting"
+            })
+        }
     try {
 
         const searchUser = await UserModel.findOne({ phone: req.body.phone })

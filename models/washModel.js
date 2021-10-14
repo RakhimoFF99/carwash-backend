@@ -39,14 +39,14 @@ const washSchema = mongoose.Schema({
         type:Array,
     },
     like:{
-        type:Number
+        type:Number,
+        default:0
     },
     dislike:{
-        type:Number
+        type:Number,
+        default:0
     },
-    comments:{
-        type:Array,
-    },
+   
     workFrom:{
         type:String,
 
