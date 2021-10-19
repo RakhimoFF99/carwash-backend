@@ -3,25 +3,19 @@ const mongoose = require('mongoose')
 const  orderSchema = mongoose.Schema({
     orderTime:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     },
-    cancelled:{
-        type:Boolean,
-        default:false,
+    name:{
+        type:String
     },
-    finished:{
-        type:Boolean,
-        default:false
+    phone:{
+        type:Number
     },
-    rejected:{
-        type:Boolean,
-        default:false
+   status:{
+    type :Number,
+    default:1
     },
-    completed:{
-        type:Boolean,
-        default:false
-    },
-    service:{
+    serviceType:{
         type:String,
         required:true
     },
@@ -37,7 +31,7 @@ const  orderSchema = mongoose.Schema({
     UserId :{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        required:true
+     
     }
 
 

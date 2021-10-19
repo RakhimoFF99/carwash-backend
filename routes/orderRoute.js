@@ -8,6 +8,6 @@ router.get('/order/all',getAllOrder)
 router.get('/order/:id',getOrderById)
 router.put('order/update/:id',verifyToken,checkRole,updateOrderById)
 router.delete('/order/delete/:id',verifyToken,checkRole,deleteOrderById)
-router.post('/order/add',verifyToken,checkRole,addOrder)
+router.post('/order/add',addOrder)
 
 module.exports = router

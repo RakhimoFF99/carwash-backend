@@ -20,7 +20,7 @@ exports.addOrder = async  function (req,res) {
 
 exports.getAllOrder = async function (req,res) {
     try {
-        const order = await orderModel.find({})
+        const order = await orderModel.find({}).sort({createdAt:-1})
         if(order) {
             res.status(200).json({
                 success:true,

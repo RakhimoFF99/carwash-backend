@@ -21,9 +21,11 @@ const washSchema = mongoose.Schema({
         type:String,
     
     },
-    photos:{
-        type:Array,
-    },
+    photos:[
+        {
+            type:String,
+        }
+    ],  
     address:{
         type:String,
         required:true,

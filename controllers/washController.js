@@ -46,6 +46,13 @@ exports.deleteWash = async function () {
 exports.updateWashById = async (req,res) => {
     try {
         const wash = washModel.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
+        console.log(wash)
+        if(wash) {
+            res.status(200).json({
+                success:true,
+                data:wash
+            })
+        }
     }
     catch(e) {
         res.status(400).json({
