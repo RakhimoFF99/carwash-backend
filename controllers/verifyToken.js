@@ -1,14 +1,19 @@
 const jwt = require('jsonwebtoken')
 module.exports =  async function (req,res,next) {
-    const token = req.header('auth-token')
+    const token = req.header('authorization')
+    console.log(token)
+    
+    
     if (!token) {
         return  res.status(401).json({
             success:false,
             message:"Unauthorized"
         })
     }
+    
  try {
-    const user = await jwt.verify(token,'2252534elyor')
+    const user = await jwt.verify(token.split(' ')[1],'2252534elyor')
+    console.log(user)
      req.user = user
     next()
  }

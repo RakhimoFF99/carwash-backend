@@ -3,6 +3,7 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 
 exports.auth = async function (req, res) {
+    console.log(req.body)
     if(!req.body.phone && !req.body.password) {
     return res.status(400).json({
         success:false,
