@@ -90,6 +90,8 @@ exports.updateOrderById  = async (req,res) => {
             message:e
         })
     }
+  }
   
-
-} 
+  exports.completeOrder = async(req,res) => {
+    
+  }
