@@ -45,6 +45,7 @@ exports.auth = async function (req, res) {
 }
 exports.getUserData = async (req,res) => {
    const user = await UserModel.findById(req.user.id)
+   console.log(user)
    res.status(200).json({
        success:true,
        data:user

@@ -15,7 +15,12 @@ exports.addWash = async function (req,res) {
   try {
     const wash  = await new washModel (req.body)
     const response = await wash.save()
-    res.send(response)  
+    if(response) {
+        res.status(201).json({
+            success:true,
+            message:"Avto yuvish shahobchasi qo'shildi"
+        })
+    }
 }
 catch(e) {
   res.status(400).send(e)
@@ -23,14 +28,44 @@ catch(e) {
 
 }
 exports.getAllWash =  async function (req,res) {
-    const wash  = await washModel.find({}).populate('districtId','region')
-    res.send(wash)
+    try {
+        const wash  = await washModel.find({}).populate('districtId','region')
+
+       if(wash) {
+           res.status(200).json({
+                success:true,
+                data:wash
+           })
+       }
+    }
+    catch(e) {
+        res.status(400).json({
+            success:false,
+            message:e
+        })
+    }
+   
 }
 exports.getWashById = async  function(req,res) {
- const wash = await washModel.find({
-     _id:req.params.id
- }).populate('districtId','name').populate('ownerId',"name")
- res.send(wash)
+try {
+    const wash = await washModel.find({
+        ownerId:req.params.id
+    }).populate('districtId','name').populate('ownerId',"name")
+    if(wash) {
+        res.status(200).json({
+            success:true,
+            data:wash
+        })
+    }
+}
+catch(e) {
+    res.status(400).json({
+        success:false,
+        message:e
+    })
+}
+  
+
 }
 
 
