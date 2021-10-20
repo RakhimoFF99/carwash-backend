@@ -2,7 +2,7 @@
 const washModel = require('../models/washModel')
 
 
-exports.addWash = async function (req,res) {
+exports.addWash = async  (req,res) => {
     const washSearch = await washModel.findOne({
         phone:req.body.phone
     })
@@ -27,7 +27,7 @@ catch(e) {
 }
 
 }
-exports.getAllWash =  async function (req,res) {
+exports.getAllWash =  async  (req,res) => {
     try {
         const wash  = await washModel.find({}).populate('districtId','region')
 
@@ -46,7 +46,7 @@ exports.getAllWash =  async function (req,res) {
     }
    
 }
-exports.getWashById = async  function(req,res) {
+exports.getWashById = async  (req,res) => {
 try {
     const wash = await washModel.find({
         ownerId:req.params.id

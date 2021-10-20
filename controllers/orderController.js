@@ -93,5 +93,55 @@ exports.updateOrderById  = async (req,res) => {
   }
   
   exports.completeOrder = async(req,res) => {
+    const order = await orderModel.findById(req.params.id)
+    if(order.status > 1) {
+        return res.status(400).json({
+            success:false,
+            message:"Buyurtma allaqachon yakunlangan yoki bekor qilingan"
+        })
+    }
+   try {
+   
+  
+    order.status = 4
+   await order.save()  
+   res.status(200).json({
+       success:true,
+       data:order
+   })
+   } 
+   catch(e) {
+       res.status(400).json({
+           success:true,
+           message:e
+       })
+   } 
+
+   
+  }
+
+  exports.rejectOrder = async (req,res) => {
+    const order = await orderModel.findById(req.params.id)
+    if(order.status > 1) {
+        return res.status(400).json({
+            success:false,
+            message:"Buyurtma allaqachon yakunlangan yoki bekor qilingan"
+        })
+    }
+    try {
+      
+        order.status = 3
+       await order.save()  
+       res.status(200).json({
+           success:true,
+           data:order
+       })
+       } 
+       catch(e) {
+           res.status(400).json({
+               success:true,
+               message:e
+           })
+       } 
     
   }
